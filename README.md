@@ -94,6 +94,6 @@ wait-go/
 │   └── install-waitgo-for-any-ai.md
 └── public/
     ├── waitgo-demo.mp4
-    └── waitgo-poster.png
+    └── waitgo-image.png
     └── waitgo-demo-1500w-24fps.gif
 ```
