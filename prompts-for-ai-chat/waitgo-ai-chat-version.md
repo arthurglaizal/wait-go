@@ -30,8 +30,3 @@ At the end:
 * provide a very concise summary of what was done;
 * indicate the execution order followed;
 * mention any important assumption, limitation, or unresolved point.
-
-Limitation:
-
-* this behavior only applies to the current chat conversation;
-* if I start a new chat, I need to paste this prompt again.
