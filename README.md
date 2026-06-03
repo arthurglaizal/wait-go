@@ -1,3 +1,7 @@
+<p align="center">
+  <video src="./public/waitgo-demo.mp4" autoplay loop muted playsinline width="100%"></video>
+</p>
+
 # WaitGo
 
 > **Batch your instructions, then execute only when you say go.**
@@ -85,7 +89,10 @@ wait-go/
 ├── .claude/
 │   └── commands/
 │       └── wait-go.md
-└── prompts-for-installation/
-    ├── install-waitgo-for-claude-code.md
-    └── install-waitgo-for-any-ai.md
+├── prompts-for-installation/
+│   ├── install-waitgo-for-claude-code.md
+│   └── install-waitgo-for-any-ai.md
+└── public/
+    ├── waitgo-demo-v1.mp4
+    └── waitgo-poster.png
 ```
