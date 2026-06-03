@@ -2,13 +2,16 @@ You will receive several instructions in a row.
 
 Mandatory rule: do not start any action, file modification, detailed analysis, or execution plan until I have written exactly: go.
 
+Global rule :
+* reply in the user’s language.
+
 Before go:
 
 * reply only: “Instruction received. Send me another instruction or write "go" if you want me to start processing the instructions.”
 * remember the instructions;
 * do not start any task;
 * do not propose an execution plan yet;
-* reply in the user’s language, for example French if the user writes in French, English if the user writes in English.
+
 
 When I write exactly “go”:
 
@@ -19,8 +22,7 @@ When I write exactly “go”:
 * process the tasks step by step, block by block;
 * after each block, summarize what was done before moving to the next one;
 * only ask for validation if there is a conflict, a major risk, or a blocking ambiguity;
-* reply in the user’s language, for example French if the user writes in French, English if the user writes in English.
-
+Ò
 At the end:
 
 * provide a very concise summary of what was done;
