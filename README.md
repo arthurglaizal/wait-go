@@ -4,26 +4,22 @@
 
 WaitGo is a minimal Claude Code slash command setup that lets you stage several instructions before execution.
 
-Instead of having Claude Code react to each instruction immediately, WaitGo makes it wait until you write `go`. It then rereads all received instructions, groups them into coherent blocks, identifies dependencies, ambiguities, or conflicts, proposes a clear execution order, and processes the tasks step by step.
+Instead of reacting to each instruction immediately, Claude Code waits until you write `go`, then processes everything as one consolidated sequence.
+
+## Why?
+
+Sometimes you have several corrections, requests, or implementation notes to send, but you do not want Claude Code to start working after the first one.
+
+WaitGo lets you gather your feedback first, trigger execution once with `go`, and let Claude Code work through the full sequence while you focus on something else or just go grab a coffee.
 
 ## Best for
 
 WaitGo is useful when you want to:
 
-- queue several corrections, requests, or implementation notes, then let Claude Code process them while you go grab a coffee;
-- batch feedback after reviewing a first result;
-- avoid Claude Code starting too early after the first instruction;
-- let Claude Code reorganize related requests, dependencies, or conflicts before acting.
-
-## Limitations
-
-WaitGo does not bypass Claude Code permissions.
-
-If Claude Code needs approval to read, edit, run, or access something, the usual permission prompts still apply. WaitGo only changes when Claude starts processing your instructions; it does not change what Claude is allowed to do.
-
-## Why?
-
-This is useful when you want to send multiple requests, corrections, or implementation notes without triggering premature actions or scattering the work across several conversations. You can gather everything you want Claude Code to handle, start the execution once with `go`, and let it work through the full sequence while you focus on something else or just go grab a coffee.
+* Queue several corrections, requests, or implementation notes before execution.
+* Batch feedback after reviewing a first result.
+* Avoid Claude Code starting too early.
+* Let Claude Code reorganize related requests, dependencies, or conflicts before acting.
 
 ## How to use
 
@@ -39,7 +35,7 @@ Note: for other AI assistants, follow the generic installation instructions.
 
 When you run `/wait-go`, Claude enters a waiting mode and lets you send several instructions in a row.
 
-Before you write `go`, Claude does not start any task, does not modify files, does not produce a detailed analysis, and does not propose an execution plan. It only confirms that the instruction has been received and keeps it in memory.
+Before you write `go`, Claude does not start any task, modify files, produce a detailed analysis, or propose an execution plan. It only confirms that the instruction has been received and keeps it in memory.
 
 When you write exactly `go`, Claude rereads all received instructions, groups them into coherent blocks, identifies dependencies, ambiguities, or possible conflicts, proposes a clear execution order, and processes the tasks step by step.
 
@@ -52,6 +48,12 @@ Plan mode helps Claude think before acting.
 WaitGo is for a different moment: when you already have several corrections, notes, or implementation requests to send, but you do not want Claude to start after the first one.
 
 It lets you stage all your feedback first, then trigger one consolidated execution with `go`.
+
+## Limitations
+
+WaitGo does not bypass Claude Code permissions.
+
+If Claude Code needs approval to read, edit, run, or access something, the usual permission prompts still apply. WaitGo only changes when Claude starts processing your instructions; it does not change what Claude is allowed to do.
 
 ## Install in Claude Code
 
