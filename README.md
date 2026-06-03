@@ -93,6 +93,7 @@ wait-go/
 │   ├── install-waitgo-for-claude-code.md
 │   └── install-waitgo-for-any-ai.md
 └── public/
-    ├── waitgo-demo-v1.mp4
+    ├── waitgo-demo.mp4
     └── waitgo-poster.png
+    └── waitgo-demo-1500w-24fps.gif
 ```
