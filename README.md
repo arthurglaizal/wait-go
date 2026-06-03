@@ -33,8 +33,6 @@ When you want to stage several requests in a Claude Code session, type:
 /wait-go
 ```
 
-Note: for other AI assistants, follow the generic installation instructions.
-
 ## What the command does
 
 When you run `/wait-go`, Claude enters a waiting mode and lets you send several instructions in a row.
@@ -77,7 +75,15 @@ This repo is designed primarily for Claude Code. The same behavior can be reprod
 
 [install-waitgo-for-any-ai.md](prompts-for-installation/install-waitgo-for-any-ai.md)
 
-Copy these instructions into your AI chat to reproduce the WaitGo behavior.
+Paste these instructions into the target assistant to let it recreate the WaitGo behavior in its own supported format.
+
+## Use in a regular AI chat (ChatGPT, Claude, Gemini…)
+
+If you just want to use WaitGo inside a normal chat, not install it in a coding assistant or project environment, copy this version into a new conversation:
+
+[waitgo-ai-chat-version.md](prompts-for-ai-chat/waitgo-ai-chat-version.md)
+
+It only applies to the current chat. If you start a new conversation, paste it again.
 
 ## Repository structure
 
@@ -89,11 +95,13 @@ wait-go/
 ├── .claude/
 │   └── commands/
 │       └── wait-go.md
+├── prompts-for-ai-chat/
+│   └── waitgo-ai-chat-version.md
 ├── prompts-for-installation/
 │   ├── install-waitgo-for-claude-code.md
 │   └── install-waitgo-for-any-ai.md
 └── public/
     ├── waitgo-demo.mp4
+    ├── waitgo-demo-1500w-24fps.gif
     └── waitgo-image.png
-    └── waitgo-demo-1500w-24fps.gif
 ```
