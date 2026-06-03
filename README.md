@@ -1,5 +1,5 @@
 <p align="center">
-  <video src="./public/waitgo-demo.mp4" autoplay loop muted playsinline width="100%"></video>
+  <img src="./public/waitgo-demo-1500w-24fps.gif" alt="WaitGo demo animation" width="100%" />
 </p>
 
 # WaitGo
