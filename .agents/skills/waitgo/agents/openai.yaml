@@ -1,0 +1,6 @@
+interface:
+  display_name: "WaitGo"
+  short_description: "Batch instructions until you say go."
+  default_prompt: "Use $waitgo to queue my next instructions until I say exactly \"go\"."
+policy:
+  allow_implicit_invocation: false

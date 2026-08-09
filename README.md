@@ -69,6 +69,38 @@ You can ask Claude Code to handle the installation. Paste this prompt in a Claud
 
 [install-waitgo-for-claude-code.md](prompts-for-installation/install-waitgo-for-claude-code.md)
 
+## Install and use in Codex
+
+WaitGo includes a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo) and a legacy slash-prompt compatibility file in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md).
+
+For a global installation backed by this repository, link both entry points into your Codex home:
+
+```sh
+mkdir -p "$HOME/.codex/skills" "$HOME/.codex/prompts"
+ln -s "$PWD/.agents/skills/waitgo" "$HOME/.codex/skills/waitgo"
+ln -s "$PWD/.codex/prompts/waitgo.md" "$HOME/.codex/prompts/waitgo.md"
+```
+
+Restart Codex or open a new chat, then invoke the recommended native skill:
+
+```txt
+$waitgo
+```
+
+Codex's deprecated custom-prompt mechanism is also available as:
+
+```txt
+/prompts:waitgo
+```
+
+Codex reserves root slash commands and does not currently support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects.
+
+### Install using Codex
+
+You can also ask Codex to handle the installation in the current project. Paste this prompt in a Codex session:
+
+[install-waitgo-for-codex.md](prompts-for-installation/install-waitgo-for-codex.md)
+
 ## Using with other AI assistants
 
 This repo is designed primarily for Claude Code. The same behavior can be reproduced with other AI assistants using the instructions in:
@@ -92,6 +124,15 @@ wait-go/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── .agents/
+│   └── skills/
+│       └── waitgo/
+│           ├── SKILL.md
+│           └── agents/
+│               └── openai.yaml
+├── .codex/
+│   └── prompts/
+│       └── waitgo.md
 ├── .claude/
 │   └── commands/
 │       └── wait-go.md
@@ -99,6 +140,7 @@ wait-go/
 │   └── waitgo-ai-chat-version.md
 ├── prompts-for-installation/
 │   ├── install-waitgo-for-claude-code.md
+│   ├── install-waitgo-for-codex.md
 │   └── install-waitgo-for-any-ai.md
 └── public/
     ├── waitgo-demo.mp4
