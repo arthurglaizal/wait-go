@@ -62,7 +62,7 @@ If it needs approval to read, edit, run, or access something, the usual permissi
 
 ## Install in Claude Code
 
-### Recommended: let Claude Code install it
+### Method 1: Let Claude Code install it (recommended)
 
 Paste this prompt in a Claude Code session:
 
@@ -76,7 +76,7 @@ Then use it with:
 /wait-go
 ```
 
-### Manual
+### Method 2: Manual
 
 Copy [wait-go.md](.claude/commands/wait-go.md) into `~/.claude/commands/` for all your sessions, or into your project's `.claude/commands/` folder to version it with the repository.
 
@@ -84,7 +84,7 @@ Copy [wait-go.md](.claude/commands/wait-go.md) into `~/.claude/commands/` for al
 
 WaitGo ships as a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo), plus a legacy slash-prompt compatibility file in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md).
 
-### Recommended: let Codex install it
+### Method 1: Let Codex install it (recommended)
 
 Paste this prompt in a Codex session:
 
@@ -100,7 +100,7 @@ $waitgo
 
 Codex reserves root slash commands and does not currently support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects. The deprecated custom-prompt mechanism is also available as `/prompts:waitgo`.
 
-### Manual
+### Method 2: Manual
 
 Clone this repository, then link both entry points into your Codex home:
 
