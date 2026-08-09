@@ -4,9 +4,16 @@ Goal: install a command that lets the user send several instructions in a row, w
 
 To do:
 
-1. Create the `.claude/commands/` folder if it does not already exist.
-2. Create this file: `.claude/commands/wait-go.md`
-3. Put exactly the following command content inside the file:
+1. Before creating anything, ask me where to install the command:
+
+   * **Global (recommended)**: `~/.claude/commands/wait-go.md`, available in all my Claude Code sessions.
+   * **Project only**: `.claude/commands/wait-go.md`, versioned with this repository and shared with my team.
+
+   Wait for my answer before continuing. If I pick the global install, tell me that writing outside the project may trigger a permission prompt.
+
+2. Create the target folder if it does not already exist.
+3. Create the command file at the location I chose.
+4. Put exactly the following command content inside the file:
 
 ```md
 You will receive several instructions in a row.
@@ -51,5 +58,5 @@ Constraints:
 
 At the end, simply tell me:
 
-* the file created;
+* the file created and whether the install is global or project-scoped;
 * how to use the command in Claude Code, for example: `/wait-go`.

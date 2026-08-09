@@ -59,21 +59,47 @@ If Claude Code needs approval to read, edit, run, or access something, the usual
 
 ## Install in Claude Code
 
-### Method 1: Copy the command file
+### Recommended: let Claude Code install it
 
-Copy [wait-go.md](.claude/commands/wait-go.md) into your project's `.claude/commands/` folder.
-
-### Method 2: Install using Claude Code
-
-You can ask Claude Code to handle the installation. Paste this prompt in a Claude Code session:
+Paste this prompt in a Claude Code session:
 
 [install-waitgo-for-claude-code.md](prompts-for-installation/install-waitgo-for-claude-code.md)
 
+Claude Code asks where to install the command, then creates it. Prefer the global install: WaitGo is a way of working, not project-specific content, so it is worth having in every session.
+
+Then use it with:
+
+```txt
+/wait-go
+```
+
+### Manual
+
+Copy [wait-go.md](.claude/commands/wait-go.md) into `~/.claude/commands/` for all your sessions, or into your project's `.claude/commands/` folder to version it with the repository.
+
 ## Install and use in Codex
 
-WaitGo includes a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo) and a legacy slash-prompt compatibility file in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md).
+WaitGo ships as a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo), plus a legacy slash-prompt compatibility file in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md).
 
-For a global installation backed by this repository, link both entry points into your Codex home:
+### Recommended: let Codex install it
+
+Paste this prompt in a Codex session:
+
+[install-waitgo-for-codex.md](prompts-for-installation/install-waitgo-for-codex.md)
+
+Codex asks whether to install the skill globally or in the current project only, then creates it. The global install is recommended so WaitGo is available in every project.
+
+Restart Codex or open a new chat, then invoke the skill:
+
+```txt
+$waitgo
+```
+
+Codex reserves root slash commands and does not currently support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects. The deprecated custom-prompt mechanism is also available as `/prompts:waitgo`.
+
+### Manual
+
+Clone this repository, then link both entry points into your Codex home:
 
 ```sh
 mkdir -p "$HOME/.codex/skills" "$HOME/.codex/prompts"
@@ -81,33 +107,13 @@ ln -s "$PWD/.agents/skills/waitgo" "$HOME/.codex/skills/waitgo"
 ln -s "$PWD/.codex/prompts/waitgo.md" "$HOME/.codex/prompts/waitgo.md"
 ```
 
-Restart Codex or open a new chat, then invoke the recommended native skill:
-
-```txt
-$waitgo
-```
-
-Codex's deprecated custom-prompt mechanism is also available as:
-
-```txt
-/prompts:waitgo
-```
-
-Codex reserves root slash commands and does not currently support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects.
-
-### Install using Codex
-
-You can also ask Codex to handle the installation in the current project. Paste this prompt in a Codex session:
-
-[install-waitgo-for-codex.md](prompts-for-installation/install-waitgo-for-codex.md)
-
 ## Using with other AI assistants
 
 This repo is designed primarily for Claude Code. The same behavior can be reproduced with other AI assistants using the instructions in:
 
 [install-waitgo-for-any-ai.md](prompts-for-installation/install-waitgo-for-any-ai.md)
 
-Paste these instructions into the target assistant to let it recreate the WaitGo behavior in its own supported format.
+Paste these instructions into the target assistant to let it recreate the WaitGo behavior in its own supported format. If the assistant supports a user-level location, it asks whether to install WaitGo globally or in the current project only.
 
 ## Use in a regular AI chat (ChatGPT, Claude, Gemini…)
 

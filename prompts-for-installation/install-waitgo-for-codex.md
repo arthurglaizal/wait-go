@@ -4,9 +4,16 @@ Goal: install a skill that lets the user send several instructions in a row, whi
 
 To do:
 
-1. Create the `.agents/skills/waitgo/agents/` folder if it does not already exist.
-2. Create this file: `.agents/skills/waitgo/SKILL.md`
-3. Put exactly the following content inside the file:
+1. Before creating anything, ask me where to install the skill:
+
+   * **Global (recommended)**: `~/.codex/skills/waitgo/`, available in all my Codex sessions and projects.
+   * **Project only**: `.agents/skills/waitgo/`, versioned with this repository and shared with my team.
+
+   Wait for my answer before continuing. If I pick the global install, tell me that writing outside the workspace is not allowed by the default sandbox and will require an approval.
+
+2. Create the `agents/` subfolder inside the location I chose, if it does not already exist.
+3. Create the `SKILL.md` file at the root of that location.
+4. Put exactly the following content inside the file:
 
 ````md
 ---
@@ -50,8 +57,8 @@ Finish with a concise summary that includes:
 Do not modify anything outside the queued instructions.
 ````
 
-4. Create this file: `.agents/skills/waitgo/agents/openai.yaml`
-5. Put exactly the following content inside the file:
+5. Create the `agents/openai.yaml` file inside the same location.
+6. Put exactly the following content inside the file:
 
 ```yaml
 interface:
@@ -64,7 +71,7 @@ policy:
 
 Optional legacy compatibility:
 
-If the user also wants the deprecated custom-prompt mechanism, create `.codex/prompts/waitgo.md` with the same behavior, using this front matter and rewriting the rules in the first person:
+If I also want the deprecated custom-prompt mechanism, create `waitgo.md` with the same behavior, in `~/.codex/prompts/` for a global install or in `.codex/prompts/` for a project install, using this front matter and rewriting the rules in the first person:
 
 ```md
 ---
@@ -79,10 +86,11 @@ Constraints:
 * Do not add dependencies.
 * Do not change project configuration.
 * Keep the skill files simple and readable.
+* If `~/.codex/skills/waitgo` already exists as a symlink to a local clone of the WaitGo repository, do not overwrite it: tell me it is already installed globally.
 
 At the end, simply tell me:
 
-* the files created;
+* the files created and whether the install is global or project-scoped;
 * how to invoke the skill in Codex, for example: `$waitgo`;
 * that a new chat or a Codex restart may be needed for the skill to be detected;
 * that Codex reserves root slash commands, so there is no custom `/waitgo` alias, and the deprecated prompt form would be `/prompts:waitgo`.

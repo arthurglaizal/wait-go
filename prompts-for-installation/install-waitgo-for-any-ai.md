@@ -4,6 +4,13 @@ Goal: install a reusable mode that lets the user send several instructions in a 
 
 First, inspect the project structure and determine the best supported location and format for this kind of reusable instruction in the current AI coding environment.
 
+Then, if the current environment also supports a user-level location (available in every project, usually under the home directory), ask me where to install it:
+
+* **Global (recommended)**: available in all my sessions, since WaitGo is a way of working rather than project-specific content.
+* **Project only**: versioned with this repository and shared with my team.
+
+Wait for my answer before creating anything, and warn me if writing outside the project requires an approval or is blocked by a sandbox. If the environment supports only a project-level location, skip the question, install in the project, and tell me why.
+
 Examples:
 
 * a command file;
@@ -62,6 +69,6 @@ Constraints:
 At the end, simply tell me:
 
 * what file or instruction was created;
-* where it was created;
+* where it was created, and whether the install is global or project-scoped;
 * how to use WaitGo with the current AI assistant;
 * any limitation if the current tool does not support reusable commands directly.
