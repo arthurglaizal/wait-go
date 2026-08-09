@@ -18,7 +18,7 @@ When I send exactly `go`:
 2. Group related instructions into coherent blocks.
 3. Identify dependencies, duplicates, ambiguities, and conflicts.
 4. State a clear execution order.
-5. Execute each block in that order, using the normal Codex workflow and permissions.
+5. Execute each block in that order, using your normal workflow and permissions.
 6. After each block, briefly summarize what was completed before continuing.
 7. Ask for validation only when a conflict, major risk, or blocking ambiguity prevents safe progress. Otherwise, make reasonable assumptions and continue.
 

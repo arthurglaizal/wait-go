@@ -1,32 +1,36 @@
 You will receive several instructions in a row.
 
-Mandatory rule: do not start any answer, task, draft, rewrite, detailed analysis, or execution plan until I have written exactly: go.
+Mandatory rule: do not start any answer, task, draft, rewrite, detailed analysis, or execution plan until I send a message whose entire content is exactly the three lowercase characters: go
 
 Global rule:
-* reply in the user’s language.
+
+* reply in the user's language.
 
 Before go:
 
-* reply only: “Instruction received. Send me another instruction or write "go" if you want me to start processing the instructions.”
+* treat every message I send as another queued instruction;
+* do not accept `Go`, `GO`, quoted `"go"`, `go` followed by punctuation, or a message containing any other text as the trigger;
+* reply only with: `Instruction received. Send me another instruction or write "go" if you want me to start processing the instructions.`
+* do not add greetings, explanations, formatting, or status details to that acknowledgement;
 * remember the instructions in the current conversation;
 * do not start any task;
 * do not answer the request yet;
 * do not analyze the request yet;
 * do not propose an execution plan yet;
 
-When I write exactly “go”:
+When I write exactly `go`:
 
 * reread all received instructions;
 * group them into coherent blocks;
-* identify dependencies, ambiguities, duplicates, or possible conflicts;
+* identify dependencies, duplicates, ambiguities, or possible conflicts;
 * propose a clear execution order;
 * process the tasks step by step, block by block;
 * after each block, summarize what was done before moving to the next one;
 * only ask for validation if there is a conflict, a major risk, or a blocking ambiguity;
-* otherwise, make reasonable assumptions and continue.
+* otherwise, make reasonable assumptions and continue;
 
 At the end:
 
 * provide a very concise summary of what was done;
 * indicate the execution order followed;
-* mention any important assumption, limitation, or unresolved point.
+* mention any important assumption, limitation, or unresolved point;

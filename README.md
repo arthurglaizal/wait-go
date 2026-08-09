@@ -29,26 +29,32 @@ WaitGo is useful when you want to:
 
 ## How to use
 
-When you want to stage several requests, invoke WaitGo in your session:
+Once installed, trigger it with the form native to your tool:
 
-```txt
-/wait-go     # Claude Code
-$waitgo      # Codex
-```
+| Where | Trigger |
+| --- | --- |
+| Claude Code | `/wait-go` |
+| Codex | `$waitgo` |
+| Other AI coding assistants | the form created at install time |
+| Regular AI chat | paste the chat version into the conversation |
+
+Then send your instructions one by one, and write exactly `go` when you want execution to start.
 
 ## What the command does
 
 When you invoke WaitGo, the assistant enters a waiting mode and lets you send several instructions in a row.
 
-Before you write `go`, it does not start any task, modify files, produce a detailed analysis, or propose an execution plan. It only confirms that the instruction has been received and keeps it in memory.
+Before you write `go`, it does not start any task, modify files, produce a detailed analysis, or propose an execution plan. It only confirms that the instruction has been received and keeps it in the conversation context.
 
-When you write exactly `go`, it rereads all received instructions, groups them into coherent blocks, identifies dependencies, ambiguities, or possible conflicts, proposes a clear execution order, and processes the tasks step by step.
+When you write exactly `go`, it rereads all received instructions, groups them into coherent blocks, identifies dependencies, duplicates, ambiguities, or possible conflicts, proposes a clear execution order, and processes the tasks step by step.
 
-At the end, it provides a concise summary of what was done, the execution order followed, and the list of files created or modified.
+Only a message whose entire content is exactly the three lowercase characters `go` triggers execution. `Go`, `GO`, `"go"`, `go.`, or `go` followed by anything else stays a queued instruction.
 
-## How is this different from plan mode?
+At the end, it provides a concise summary of what was done, the execution order followed, the files created or modified when the tool can edit files, and any important assumption, limitation, or unresolved point.
 
-Plan mode helps the assistant think before acting.
+## How is this different from a plan mode?
+
+Planning features help the assistant think before acting.
 
 WaitGo is for a different moment: when you already have several corrections, notes, or implementation requests to send, but you do not want it to start after the first one.
 
@@ -59,6 +65,8 @@ It lets you stage all your feedback first, then trigger one consolidated executi
 WaitGo does not bypass your assistant's permissions.
 
 If it needs approval to read, edit, run, or access something, the usual permission prompts still apply. WaitGo only changes when your assistant starts processing your instructions; it does not change what it is allowed to do.
+
+Queued instructions live in the conversation context, not on disk. If the conversation is compacted, reset, or restarted before you write `go`, the queue can be lost.
 
 ## Install in Claude Code
 
@@ -82,7 +90,7 @@ Copy [wait-go.md](.claude/commands/wait-go.md) into `~/.claude/commands/` for al
 
 ## Install and use in Codex
 
-WaitGo ships as a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo), plus a legacy slash-prompt compatibility file in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md).
+WaitGo ships as a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo).
 
 ### Method 1: Let Codex install it (recommended)
 
@@ -98,17 +106,24 @@ Restart Codex or open a new chat, then invoke the skill:
 $waitgo
 ```
 
-Codex reserves root slash commands and does not currently support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects. The deprecated custom-prompt mechanism is also available as `/prompts:waitgo`.
+Codex reserves root slash commands and does not support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects.
 
 ### Method 2: Manual
 
-Clone this repository, then link both entry points into your Codex home:
+Clone this repository, enter it, then link the skill into your user-level skills folder:
 
 ```sh
-mkdir -p "$HOME/.codex/skills" "$HOME/.codex/prompts"
-ln -s "$PWD/.agents/skills/waitgo" "$HOME/.codex/skills/waitgo"
-ln -s "$PWD/.codex/prompts/waitgo.md" "$HOME/.codex/prompts/waitgo.md"
+git clone https://github.com/arthurglaizal/wait-go.git
+cd wait-go
+mkdir -p "$HOME/.agents/skills"
+ln -s "$PWD/.agents/skills/waitgo" "$HOME/.agents/skills/waitgo"
 ```
+
+Codex also discovers user skills under `~/.codex/skills`, but that location is deprecated and kept only for backward compatibility.
+
+For a project-only install, `.agents/skills/waitgo` is already picked up when you work inside this repository.
+
+A legacy custom-prompt file is also kept in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md) for older Codex versions that loaded reusable prompts from `~/.codex/prompts`. On recent versions, use the skill.
 
 ## Using with other AI assistants
 
@@ -156,3 +171,7 @@ wait-go/
     ├── waitgo-1280.gif
     └── waitgo-image.png
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
