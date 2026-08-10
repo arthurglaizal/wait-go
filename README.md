@@ -172,6 +172,10 @@ wait-go/
     └── waitgo-image.png
 ```
 
+## Support
+
+If you find this project useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
