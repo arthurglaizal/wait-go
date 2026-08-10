@@ -173,8 +173,7 @@ wait-go/
 ```
 
 ## Support
-
-If you find this project useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux).
+If you find my work useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux) ☕️
 
 ## License
 
