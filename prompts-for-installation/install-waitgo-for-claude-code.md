@@ -1,19 +1,60 @@
-Create a reusable Claude Code command in this project called **WaitGo**.
+Install **WaitGo** in Claude Code.
 
-Goal: install a command that lets the user send several instructions in a row, while Claude Code waits until the user writes exactly `go` before starting any work.
+Goal: WaitGo lets me send several instructions in a row while Claude Code queues them, and starts working only when I send a message whose entire content is exactly `go`.
 
-To do:
+**Important:** do not trust any folder, file path, or format taken from memory, from older tutorials, or from this prompt. Claude Code changes its formats and locations over time. Work out what is current **now**, at the moment you run this.
 
-1. Before creating anything, ask me where to install the command:
+## 1. Ask me first, then wait
 
-   * **Global (recommended)**: `~/.claude/commands/wait-go.md`, available in all my Claude Code sessions.
-   * **Project only**: `.claude/commands/wait-go.md`, versioned with this repository and shared with my team.
+Ask me where to install WaitGo:
 
-   Wait for my answer before continuing. If I pick the global install, tell me that writing outside the project may trigger a permission prompt.
+* **Personal / global (recommended)**: available in all my Claude Code sessions, in every project. WaitGo is a way of working, not project content.
+* **Project only**: stored inside this repository, versioned, shared with my team.
 
-2. Create the target folder if it does not already exist.
-3. Create the command file at the location I chose.
-4. Put exactly the following command content inside the file:
+Wait for my answer before creating, moving, or writing anything.
+
+## 2. Find out what Claude Code supports today
+
+Before resolving any path:
+
+* Read Claude Code's current official documentation about reusable, user-invocable instruction files (skills, custom commands, or whatever the product calls them today). Start from the official Claude Code documentation site and follow any redirect you hit — the documentation has moved before.
+* From that documentation, identify the format the product currently documents as the recommended one for this kind of reusable instruction, and the location matching the scope I chose.
+* Then look at my machine: the installed Claude Code version, which of the documented folders already exist, and whether an older format is already in use here.
+* If the documentation and my local environment disagree, tell me and ask which one to follow.
+
+Do not assume the answer is the same as last year, or the same as what this repository already contains.
+
+## 3. Show me the resolved path before writing
+
+Print:
+
+* the format you selected and why it is the current recommended one;
+* the exact absolute path you are about to create;
+* the exact name I will type to invoke WaitGo.
+
+If the target is outside this project, tell me clearly that writing there may require my approval or a permission prompt, and let me approve it.
+
+## 4. Check for an existing installation
+
+Before writing, check whether WaitGo is already installed at the resolved location **or** in any other location the current documentation still recognises, including an older format.
+
+Treat these as existing installations:
+
+* a real folder or file;
+* a symlink pointing to a valid target, for example a local clone of the WaitGo repository;
+* a **broken** symlink whose target no longer exists — report it as broken and ask me what to do.
+
+If something already exists, never overwrite it silently. Show me the differences between what is there and what you would write, then ask me to confirm.
+
+## 5. Create the files
+
+Create only what the current format actually requires: the instruction file itself, plus any metadata or folder structure the product requires today.
+
+The name I type to invoke WaitGo must be **`wait-go`**. Put that name wherever the current format expects it — folder name, file name, or a metadata field. Check the documentation instead of guessing.
+
+Do not create any legacy or deprecated format by default. If a legacy format is still supported and I explicitly ask for it, you may add it afterwards, clearly presented as optional and secondary.
+
+The behaviour below must be preserved **exactly**. Copy this text as the instruction content. You may only adapt the wrapping — add the metadata block or frontmatter fields the current format requires — never the rules themselves:
 
 ```md
 You will receive several instructions in a row.
@@ -55,15 +96,33 @@ At the end:
 Do not modify anything else in the project.
 ```
 
-Constraints:
+If the current format requires a description or a similar field, use this one:
 
-* Do not modify any other file.
-* Do not rename existing commands.
+```txt
+Queue several instructions in a row and start working only when the user sends a message whose entire content is exactly `go`. Use when the user invokes it directly or asks you to wait until they say go.
+```
+
+## 6. Validate
+
+After writing:
+
+* confirm the file exists at the path you announced;
+* confirm it is valid for the current format, for example that any required metadata is present and well-formed;
+* if Claude Code offers a way to list or check installed skills or commands, use it and show me the result.
+
+## 7. Tell me
+
+Keep it short:
+
+* what was created, where, and whether the install is personal/global or project-scoped;
+* how to invoke WaitGo, and how to use it: send instructions one by one, then write exactly `go`;
+* whether a restart or a new conversation is needed before it is detected;
+* anything you could not confirm in the official documentation.
+
+## Constraints
+
+* Do not modify any other file in this project.
+* Do not rename or delete existing skills, commands, or prompts.
 * Do not add dependencies.
 * Do not change project configuration.
-* Keep the command file simple and readable.
-
-At the end, simply tell me:
-
-* the file created and whether the install is global or project-scoped;
-* how to use the command in Claude Code, for example: `/wait-go`.
+* Keep the installed file simple and readable.

@@ -34,7 +34,7 @@ Once installed, trigger it with the form native to your tool:
 | Where | Trigger |
 | --- | --- |
 | Claude Code | `/wait-go` |
-| Codex | `$waitgo` |
+| Codex | `$waitgo`, or the `/skills` menu |
 | Other AI coding assistants | the form created at install time |
 | Regular AI chat | paste the chat version into the conversation |
 
@@ -70,13 +70,15 @@ Queued instructions live in the conversation context, not on disk. If the conver
 
 ## Install in Claude Code
 
+Claude Code changes its formats and folders over time, so the install prompt below resolves the current format and location at install time instead of relying on a fixed path.
+
 ### Method 1: Let Claude Code install it (recommended)
 
 Paste this prompt in a Claude Code session:
 
 [install-waitgo-for-claude-code.md](prompts-for-installation/install-waitgo-for-claude-code.md)
 
-Claude Code asks where to install the command, then creates it. Prefer the global install: WaitGo is a way of working, not project-specific content, so it is worth having in every session.
+Claude Code asks whether to install WaitGo for all your sessions or in this project only, checks the format and location Claude Code currently recommends, shows you the resolved path, and only then creates the file. Prefer the personal install: WaitGo is a way of working, not project-specific content, so it is worth having in every session.
 
 Then use it with:
 
@@ -86,11 +88,15 @@ Then use it with:
 
 ### Method 2: Manual
 
-Copy [wait-go.md](.claude/commands/wait-go.md) into `~/.claude/commands/` for all your sessions, or into your project's `.claude/commands/` folder to version it with the repository.
+Copy [wait-go.md](.claude/commands/wait-go.md) into the personal or project location Claude Code currently uses for reusable, user-invocable instructions, under the name `wait-go`.
+
+As of August 2026, Claude Code has merged custom commands into skills: a skill at `~/.claude/skills/wait-go/SKILL.md` and a command file at `~/.claude/commands/wait-go.md` both create `/wait-go`, and existing command files keep working. Use the project's `.claude/` folder instead of `~/.claude/` to version it with the repository. Check the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) in case these locations have changed since.
 
 ## Install and use in Codex
 
 WaitGo ships as a native Codex skill in [`.agents/skills/waitgo`](.agents/skills/waitgo).
+
+Codex changes its formats and folders over time, so the install prompt below resolves the current format and location at install time instead of relying on a fixed path.
 
 ### Method 1: Let Codex install it (recommended)
 
@@ -98,19 +104,19 @@ Paste this prompt in a Codex session:
 
 [install-waitgo-for-codex.md](prompts-for-installation/install-waitgo-for-codex.md)
 
-Codex asks whether to install the skill globally or in the current project only, then creates it. The global install is recommended so WaitGo is available in every project.
+Codex asks whether to install the skill for all your projects or in the current project only, checks the format and location Codex currently recommends, shows you the resolved path, and only then creates the files. The personal install is recommended so WaitGo is available in every project.
 
-Restart Codex or open a new chat, then invoke the skill:
+Invoke the skill with:
 
 ```txt
 $waitgo
 ```
 
-Codex reserves root slash commands and does not support a custom `/waitgo` alias. `$waitgo` is the native reusable form and works across projects.
+You can also pick it from the `/skills` menu. If it does not show up right away, restart Codex.
 
 ### Method 2: Manual
 
-Clone this repository, enter it, then link the skill into your user-level skills folder:
+Clone this repository, enter it, then link the skill into your personal skills folder:
 
 ```sh
 git clone https://github.com/arthurglaizal/wait-go.git
@@ -119,11 +125,11 @@ mkdir -p "$HOME/.agents/skills"
 ln -s "$PWD/.agents/skills/waitgo" "$HOME/.agents/skills/waitgo"
 ```
 
-Codex also discovers user skills under `~/.codex/skills`, but that location is deprecated and kept only for backward compatibility.
+As of August 2026, Codex loads personal skills from `$HOME/.agents/skills` and repository skills from `.agents/skills`. Check the [Codex skills documentation](https://learn.chatgpt.com/docs/build-skills) in case these locations have changed since.
 
 For a project-only install, `.agents/skills/waitgo` is already picked up when you work inside this repository.
 
-A legacy custom-prompt file is also kept in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md) for older Codex versions that loaded reusable prompts from `~/.codex/prompts`. On recent versions, use the skill.
+A legacy custom-prompt file is also kept in [`.codex/prompts/waitgo.md`](.codex/prompts/waitgo.md) for older Codex versions that loaded reusable prompts from `~/.codex/prompts`. Custom prompts are deprecated in favor of skills, so use the skill on recent versions.
 
 ## Using with other AI assistants
 

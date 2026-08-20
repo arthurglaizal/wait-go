@@ -1,26 +1,65 @@
-Create a reusable Codex skill called **WaitGo**.
+Install **WaitGo** in Codex.
 
-Goal: install a skill that lets the user send several instructions in a row, while Codex waits until the user writes exactly `go` before starting any work.
+Goal: WaitGo lets me send several instructions in a row while Codex queues them, and starts working only when I send a message whose entire content is exactly `go`.
 
-To do:
+**Important:** do not trust any folder, file path, or format taken from memory, from older tutorials, or from this prompt. Codex changes its formats and locations over time. Work out what is current **now**, at the moment you run this.
 
-1. Before creating anything, ask me where to install the skill:
+## 1. Ask me first, then wait
 
-   * **Global (recommended)**: `~/.agents/skills/waitgo/`, available in all my Codex sessions and projects.
-   * **Project only**: `.agents/skills/waitgo/`, versioned with this repository and shared with my team.
+Ask me where to install WaitGo:
 
-   Wait for my answer before continuing. If I pick the global install, tell me that writing outside the workspace is not allowed by the default sandbox and will require an approval.
+* **Personal / global (recommended)**: available in all my Codex sessions, in every project. WaitGo is a way of working, not project content.
+* **Project only**: stored inside this repository, versioned, shared with my team.
 
-   Do not install into `~/.codex/skills/`: Codex still discovers user skills there, but that location is deprecated and kept only for backward compatibility.
+Wait for my answer before creating, moving, or writing anything.
 
-2. Create the `agents/` subfolder inside the location I chose, if it does not already exist.
-3. Create the `SKILL.md` file at the root of that location.
-4. Put exactly the following content inside the file:
+## 2. Find out what Codex supports today
+
+Before resolving any path:
+
+* Read Codex's current official documentation about reusable, invocable instruction sets (skills, custom prompts, or whatever the product calls them today). Start from the official Codex documentation site and follow any redirect you hit — the documentation has moved before.
+* From that documentation, identify the format the product currently documents as the recommended one for this kind of reusable instruction, which files and metadata it requires, and the location matching the scope I chose.
+* Then look at my machine: the installed Codex version, which of the documented folders already exist, and whether an older format is already in use here.
+* If the documentation and my local environment disagree, tell me and ask which one to follow.
+
+Do not assume the answer is the same as last year, or the same as what this repository already contains.
+
+## 3. Show me the resolved path before writing
+
+Print:
+
+* the format you selected and why it is the current recommended one;
+* the exact absolute path you are about to create, and every file you will put in it;
+* the exact form I will type to invoke WaitGo.
+
+If the target is outside this workspace, tell me clearly that the default sandbox may block writing there and that it will require my approval, and let me approve it.
+
+## 4. Check for an existing installation
+
+Before writing, check whether WaitGo is already installed at the resolved location **or** in any other location the current documentation still recognises, including an older or deprecated one.
+
+Treat these as existing installations:
+
+* a real folder or file;
+* a symlink pointing to a valid target, for example a local clone of the WaitGo repository — in that case tell me it is already installed and stop;
+* a **broken** symlink whose target no longer exists — report it as broken and ask me what to do.
+
+If something already exists, never overwrite it silently. Show me the differences between what is there and what you would write, then ask me to confirm.
+
+## 5. Create the files
+
+Create only what the current format actually requires: the instruction file itself, plus any companion metadata file or folder structure the product requires today. Check the documentation for which fields are required and which are optional, instead of copying an old example.
+
+The name I type to invoke WaitGo must be **`waitgo`**. Put that name wherever the current format expects it — folder name, file name, or a metadata field.
+
+Do not create any legacy or deprecated format by default. If a legacy format is still supported and I explicitly ask for it, you may add it afterwards, clearly presented as optional and secondary.
+
+The behaviour below must be preserved **exactly**. Copy this text as the instruction content. You may only adapt the wrapping — add, rename, or drop metadata fields so the file matches what the current format requires — never the rules themselves:
 
 ````md
 ---
 name: waitgo
-description: Enter a staged-instruction mode that queues several user requests and waits for an exact `go` message before doing any work. Use when the user explicitly invokes `$waitgo`, asks the assistant to wait until they say go, or wants to batch instructions before execution.
+description: Enter a staged-instruction mode that queues several user requests and waits for an exact `go` message before doing any work. Use when the user explicitly invokes the skill, asks the assistant to wait until they say go, or wants to batch instructions before execution.
 ---
 
 # WaitGo
@@ -59,40 +98,40 @@ Finish with a concise summary that includes:
 Do not modify anything outside the queued instructions.
 ````
 
-5. Create the `agents/openai.yaml` file inside the same location.
-6. Put exactly the following content inside the file:
+If the current format supports an optional companion file for how the skill is presented and invoked, and the documentation still describes those fields, use this content and adapt the field names to what is documented today. WaitGo must never be triggered implicitly — only when I invoke it myself:
 
 ```yaml
 interface:
   display_name: "WaitGo"
   short_description: "Batch instructions until you say go."
-  default_prompt: "Use $waitgo to queue my next instructions until I say exactly \"go\"."
+  default_prompt: "Queue my next instructions with WaitGo until I say exactly \"go\"."
 policy:
   allow_implicit_invocation: false
 ```
 
-Optional legacy compatibility:
+If the field that disables implicit invocation no longer exists or has been renamed, tell me instead of silently dropping the intent.
 
-Only if I am on an older Codex version that loads reusable prompts from `~/.codex/prompts`, create `waitgo.md` with the same behavior, in `~/.codex/prompts/` for a global install or in `.codex/prompts/` for a project install, using this front matter and rewriting the rules in the first person:
+## 6. Validate
 
-```md
----
-description: Queue instructions and execute them only after an exact go
----
-```
+After writing:
 
-Constraints:
+* confirm every file exists at the paths you announced;
+* confirm they are valid for the current format, for example that required metadata is present and the YAML parses;
+* if Codex offers a way to list installed skills or prompts, use it and show me the result.
 
-* Do not modify any other file.
-* Do not rename existing skills or prompts.
+## 7. Tell me
+
+Keep it short:
+
+* what was created, where, and whether the install is personal/global or project-scoped;
+* how to invoke WaitGo, and how to use it: send instructions one by one, then write exactly `go`;
+* whether a restart or a new conversation is needed before it is detected;
+* anything you could not confirm in the official documentation.
+
+## Constraints
+
+* Do not modify any other file in this project.
+* Do not rename or delete existing skills or prompts.
 * Do not add dependencies.
 * Do not change project configuration.
-* Keep the skill files simple and readable.
-* If `~/.agents/skills/waitgo` or `~/.codex/skills/waitgo` already exists as a symlink to a local clone of the WaitGo repository, do not overwrite it: tell me it is already installed globally.
-
-At the end, simply tell me:
-
-* the files created and whether the install is global or project-scoped;
-* how to invoke the skill in Codex, for example: `$waitgo`;
-* that a new chat or a Codex restart may be needed for the skill to be detected;
-* that Codex reserves root slash commands, so there is no custom `/waitgo` alias.
+* Keep the installed files simple and readable.
