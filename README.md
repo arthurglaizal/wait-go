@@ -178,6 +178,16 @@ wait-go/
     └── waitgo-image.png
 ```
 
+## More commands like WaitGo
+
+Built the same way as WaitGo, and just as portable.
+
+| Command | What it does |
+| --- | --- |
+| [Session Recap](https://github.com/arthurglaizal/session-recap) | Recaps what you did in the current session and what to pick up next. |
+| [Noob Command](https://github.com/arthurglaizal/noob-command) | Rewrites the last AI answer in simple, concise language. |
+| [Ask Mode](https://github.com/arthurglaizal/ask-mode) | Lets you question your codebase without the assistant changing anything. |
+
 ## Support
 If you find my work useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux) ☕️
 
