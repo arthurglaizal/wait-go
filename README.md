@@ -178,9 +178,9 @@ wait-go/
     └── waitgo-image.png
 ```
 
-## More commands like WaitGo
+## More AI workflow commands
 
-Built the same way as WaitGo, and just as portable.
+Small, portable commands for Claude Code, Codex, and any AI assistant.
 
 | Command | What it does |
 | --- | --- |
