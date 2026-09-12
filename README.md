@@ -187,6 +187,7 @@ Small, portable commands for Claude Code, Codex, and any AI assistant.
 | [Session Recap](https://github.com/arthurglaizal/session-recap) | Recaps what you did in the current session and what to pick up next. |
 | [Noob Command](https://github.com/arthurglaizal/noob-command) | Rewrites the last AI answer in simple, concise language. |
 | [Ask Mode](https://github.com/arthurglaizal/ask-mode) | Lets you question your codebase without the assistant changing anything. |
+| [AI Handoff](https://github.com/arthurglaizal/ai-handoff) | Packages the current context so another AI can continue the work. |
 
 ## Support
 If you find my work useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux) ☕️
