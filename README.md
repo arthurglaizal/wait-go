@@ -8,7 +8,7 @@
 
 Works with Claude Code, Codex, and any AI assistant.
 
-WaitGo is a minimal reusable command that lets you stage several instructions before execution.
+WaitGo is a minimal reusable skill that lets you stage several instructions before execution.
 
 Instead of reacting to each instruction immediately, your assistant waits until you write `go`, then processes everything as one consolidated sequence.
 
@@ -40,7 +40,7 @@ Once installed, trigger it with the form native to your tool:
 
 Then send your instructions one by one, and write exactly `go` when you want execution to start.
 
-## What the command does
+## What the skill does
 
 When you invoke WaitGo, the assistant enters a waiting mode and lets you send several instructions in a row.
 
@@ -186,17 +186,17 @@ wait-go/
     └── waitgo-image.png
 ```
 
-## More AI workflow commands
+## More AI workflow skills
 
-Small, portable commands for Claude Code, Codex, and any AI assistant.
+Small, portable skills for Claude Code, Codex, and any AI assistant.
 
-| Command | What it does |
+| Skill | What it does |
 | --- | --- |
 | [Session Recap](https://github.com/arthurglaizal/session-recap) | Recaps what you did in the current session and what to pick up next. |
-| [Noob Command](https://github.com/arthurglaizal/noob-command) | Rewrites the last AI answer in simple, concise language. |
+| [Noob](https://github.com/arthurglaizal/noob) | Rewrites the last AI answer in simple, concise language. |
 | [Ask Mode](https://github.com/arthurglaizal/ask-mode) | Lets you question your codebase without the assistant changing anything. |
 | [AI Handoff](https://github.com/arthurglaizal/ai-handoff) | Packages the current context so another AI can continue the work. |
-| [FYI](https://github.com/arthurglaizal/fyi-command) | Gives your assistant context without giving it a task. |
+| [FYI](https://github.com/arthurglaizal/fyi) | Gives your assistant context without giving it a task. |
 
 ## Support
 If you find my work useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux) ☕️
