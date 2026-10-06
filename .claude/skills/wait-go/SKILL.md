@@ -1,3 +1,9 @@
+---
+name: wait-go
+description: Enter a staged-instruction mode that queues several user requests and waits for an exact `go` message before doing any work. Use only when the user explicitly invokes `/wait-go`.
+disable-model-invocation: true
+---
+
 You will receive several instructions in a row.
 
 Mandatory rule: do not start any action, file modification, detailed analysis, or execution plan until I send a message whose entire content is exactly the three lowercase characters: go
