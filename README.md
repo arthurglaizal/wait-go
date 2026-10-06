@@ -88,9 +88,16 @@ Then use it with:
 
 ### Method 2: Manual
 
-Copy [wait-go.md](.claude/commands/wait-go.md) into the personal or project location Claude Code currently uses for reusable, user-invocable instructions, under the name `wait-go`.
+Clone this repository, enter it, then link the skill into your personal skills folder:
 
-As of August 2026, Claude Code has merged custom commands into skills: a skill at `~/.claude/skills/wait-go/SKILL.md` and a command file at `~/.claude/commands/wait-go.md` both create `/wait-go`, and existing command files keep working. Use the project's `.claude/` folder instead of `~/.claude/` to version it with the repository. Check the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) in case these locations have changed since.
+```sh
+git clone https://github.com/arthurglaizal/wait-go.git
+cd wait-go
+mkdir -p "$HOME/.claude/skills"
+ln -s "$PWD/.claude/skills/wait-go" "$HOME/.claude/skills/wait-go"
+```
+
+For a project-only install, copy the [`.claude/skills/wait-go`](.claude/skills/wait-go) folder into your project's `.claude/skills/` folder instead. Check the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) in case these locations have changed since.
 
 ## Install and use in Codex
 
@@ -164,8 +171,9 @@ wait-go/
 │   └── prompts/
 │       └── waitgo.md
 ├── .claude/
-│   └── commands/
-│       └── wait-go.md
+│   └── skills/
+│       └── wait-go/
+│           └── SKILL.md
 ├── prompts-for-ai-chat/
 │   └── waitgo-ai-chat-version.md
 ├── prompts-for-installation/
