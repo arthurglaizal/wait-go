@@ -197,6 +197,7 @@ Small, portable commands for Claude Code, Codex, and any AI assistant.
 | [Ask Mode](https://github.com/arthurglaizal/ask-mode) | Lets you question your codebase without the assistant changing anything. |
 | [AI Handoff](https://github.com/arthurglaizal/ai-handoff) | Packages the current context so another AI can continue the work. |
 | [FYI](https://github.com/arthurglaizal/fyi) | Gives your assistant context without giving it a task. |
+| [Lazy](https://github.com/arthurglaizal/lazy) | Does what the assistant just suggested, instead of explaining it. |
 
 ## Support
 If you find my work useful, you can [buy me a coffee](https://ko-fi.com/arturo_ux) ☕️
